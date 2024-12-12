@@ -1,0 +1,62 @@
+;
+; Kernel_Driver_Test.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = "System"
+ClassGuid   = "{4d36e97d-e325-11ce-bfc1-08002be10318}"
+Provider    = "DebugMan_W"
+DriverVer   = "01/01/2024,1.0.0.0" ; Time and Version
+CatalogFile = "Kernel_Driver_Test.cat" ; CAT file
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Kernel_Driver_Test.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%Kernel_Driver_Test.DeviceDesc% = Kernel_Driver_Test_Device, Root\Kernel_Driver_Test ; TODO: edit hw-id
+
+[Kernel_Driver_Test_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+Kernel_Driver_Test.sys
+
+;-------------- Service installation
+[Kernel_Driver_Test_Device.NT.Services]
+AddService = Kernel_Driver_Test,%SPSVCINST_ASSOCSERVICE%, Kernel_Driver_Test_Service_Inst
+
+; -------------- Kernel_Driver_Test driver install sections
+[Kernel_Driver_Test_Service_Inst]
+DisplayName    = %Kernel_Driver_Test.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\Kernel_Driver_Test.sys
+
+[Kernel_Driver_Test_Device.NT.Wdf]
+KmdfService = Kernel_Driver_Test, Kernel_Driver_Test_wdfsect
+
+[Kernel_Driver_Test_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "DebugMan_W"
+DiskName = "Kernel_Driver_Test Installation Disk"
+Kernel_Driver_Test.DeviceDesc = "Kernel_Driver_Test Device"
+Kernel_Driver_Test.SVCDESC = "Kernel_Driver_Test Service"

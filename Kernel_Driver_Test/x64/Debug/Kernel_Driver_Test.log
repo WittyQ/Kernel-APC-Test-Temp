@@ -1,0 +1,13 @@
+﻿  Building 'Kernel_Driver_Test' with toolset 'WindowsKernelModeDriver10.0' and the 'Windows Driver' target platform.
+  Stamping x64\Debug\Kernel_Driver_Test.inf
+  Stamping [Version] section with DriverVer=12/12/2024,20.38.43.561
+  DriverMain.c
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(144,34): warning C4100: 'pDriver': unreferenced formal parameter
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(155,68): error C4013: 'PsGetNextProcess' undefined; assuming extern returning int
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(155,66): warning C4047: '=': 'PEPROCESS' differs in levels of indirection from 'int'
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(163,12): error C4013: 'SeQueryInformationProcessToken' undefined; assuming extern returning int
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(163,58): error C2065: 'ProcessImageNameLength': undeclared identifier
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(166,32): warning C4047: 'function': 'PCUNICODE_STRING' differs in levels of indirection from 'WCHAR (*)[256]'
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(166,32): warning C4024: 'RtlCompareUnicodeString': different types for formal and actual parameter 1
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(166,51): warning C4133: 'function': incompatible types - from 'PCWSTR' to 'PCUNICODE_STRING'
+C:\Users\13984\Desktop\Study\Kernel Driver\Windows_Driver_Test\Kernel_Driver_Test\Kernel_Driver_Test\DriverMain.c(187,11): error C4013: 'InjectDll' undefined; assuming extern returning int
